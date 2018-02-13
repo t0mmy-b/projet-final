@@ -7,11 +7,10 @@ class Menu:
         rectMode(CORNER)
         rect(0,0,500,500)
     def text(self):
-        font=loadFont("Futura-Heavy-48.vlw")
         fill(255)
-        textFont(font, 48)
+        textSize(48)
         text("Menu",185,50)
-        textFont(font, 16)
+        textSize(16)
         text("MSF's Test Menu",10,390)
     class Bouttons:
         def __init__(self):
@@ -22,53 +21,36 @@ class Menu:
             self.sizew=300
             self.sizeh=50
         def b1(self):
-            font=loadFont("Futura-Heavy-48.vlw")
             fill(45,0,100)
             rectMode(CENTER)
             rect(self.xb1,self.yb1,self.sizew,self.sizeh)
             fill(255)
-            textFont(font, 32)
+            textSize(32)
             text("Play",224,210)
         def b2(self):
-            font=loadFont("Futura-Heavy-48.vlw")
             fill(45,0,100)
             rectMode(CENTER)
             rect(self.xb2,self.yb2,self.sizew,self.sizeh)
             fill(255)
-            textFont(font, 32)
+            textSize(32)
             text("About",210,310)
         def highlight(self):
-            font=loadFont("Futura-Heavy-48.vlw")
             if (mouseX>=100 and mouseX<=400 and mouseY>=175 and mouseY<=225):
                 fill(45,0,137)
                 rectMode(CENTER)
                 rect(self.xb1,self.yb1,self.sizew,self.sizeh)
                 fill(255)
-                textFont(font, 32)
+                textSize(32)
                 text("Play",224,210)
             elif (mouseX>=100 and mouseX<=400 and mouseY>=275 and mouseY<=325):
                 fill(45,0,137)
                 rectMode(CENTER)
                 rect(self.xb2,self.yb2,self.sizew,self.sizeh)
                 fill(255)
-                textFont(font, 32)
+                textSize(32)
                 text("About",210,310)
         def click(self):
-            font=loadFont("Futura-Heavy-48.vlw")
-            if (mouseX>=100 and mouseX<=400 and mouseY>=175 and mouseY<=225):
-                fill(45,0,154)
-                rectMode(CENTER)
-                rect(self.xb1,self.yb1,self.sizew,self.sizeh)
-                fill(255)
-                textFont(font, 32)
-                text("Play",224,210)
-            elif (mouseX>=100 and mouseX<=400 and mouseY>=275 and mouseY<=325):
-                fill(45,0,154)
-                rectMode(CENTER)
-                rect(self.xb2,self.yb2,self.sizew,self.sizeh)
-                fill(255)
-                textFont(font, 32)
-                text("About",210,310)
+            mousePressed()
 def setup():
     background(0)
     size(500,400)
@@ -81,5 +63,24 @@ def draw():
     Menu.Bouttons().b1()
     Menu.Bouttons().b2()
     Menu.Bouttons().highlight()
+    
+    
+def mousePressed():
+    if state==1:
+        if (mouseButton==LEFT and mouseX>=100 and mouseX<=400 and mouseY>=175 and mouseY<=225):
+            fill(45,0,154)
+            rectMode(CENTER)
+            rect(Menu.Bouttons().xb1,Menu.Bouttons().yb1,Menu.Bouttons().sizew,Menu.Bouttons().sizeh)
+            fill(255)
+            textSize(32)
+            text("Play",224,210)
+        elif (mouseButton==LEFT and mouseX>=100 and mouseX<=400 and mouseY>=275 and mouseY<=325):
+            fill(45,0,154)
+            rectMode(CENTER)
+            rect(Menu.Bouttons().xb2,Menu.Bouttons().yb2,Menu.Bouttons().sizew,Menu.Bouttons().sizeh)
+            fill(255)
+            textSize(32)
+            text("About",210,310)
+
 #45,0,100 Dark
 #45,0,137 Highlighted
